@@ -107,10 +107,7 @@ body{
   padding: 5px 5px 5px 10px;
 }
 /* 공통 네비게이션 */
-.navigation{
-  background: aqua;
-  height: 10vh;
-}
+
 /* 공통 메인 */
 .main{
   background: orange;
@@ -354,7 +351,7 @@ body{
     background: #988574;
   }
   .navigation {
-    height: 10vh;
+    
   }
   /* 데스크탑 메인 콘텐츠 */
   .main {
