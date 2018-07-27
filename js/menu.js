@@ -3,15 +3,14 @@
 //     $('.grid').toggleClass('grid-show');
 //   }
 // });
-// window.resize(function(){
-//   location.reload();
-// });
+$(window).resize(function () {
+  location.reload();
+});
 var viewport = window.matchMedia('(max-width: 999px)');
 
 if (viewport.matches) {
-  window.resize(function () {
-    location.reload();
-  });
+
+
   var nav = $('.navigation');
   var menu = $('.menu');
   var btn = $('<button class="btn-menu" aria-label="메인 메뉴 열기"></button>');
