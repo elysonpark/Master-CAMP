@@ -3,7 +3,7 @@
 //     $('.grid').toggleClass('grid-show');
 //   }
 // });
-$(window).resize(function () {
+$(window) .resize(function () {
   location.reload();
 });
 var viewport = window.matchMedia('(max-width: 999px)');
