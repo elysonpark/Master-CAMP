@@ -46,37 +46,34 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-/*숨김 컨텐츠*/
-legend, .ally{
+/* 숨김 콘텐츠 */
+legend, .a11y{
   position: absolute;
-  /*left: -9999em; 또는 width,height 을 0px -> 가상커서의 포커싱이 불가능*/
   width: 1px;
   height: 1px;
   overflow: hidden;
   margin: -1px;
   clip: rect(0,0,0,0);
-
 }
- /* clearfix-float 이슈를 해결하기 위한 클래스 모듈 */
- .clearfix::after{
-   content: "";
-   display: block;
-   clear: both;
-
- }
+/* clearfix - float 이슈를 해결하기 위한 클래스 모듈 */
+.clearfix::after{
+  content: "";
+  display: block;
+  clear: both;
+}
 /* 하이퍼링크 스타일 */
 a{
   color: inherit;
   text-decoration: none;
 }
-/* 본문스타일 */
+/* 본문 스타일 */
 html{
   font-size: 10px;
 }
 body{
-  font-size: 1.6rem;
+  /* font-size: 1.6rem; */
   color: #181818;
-  font-family: 'Noto Sans Regular';
+  font-family: 'Noto Sans Regular', sans-serif;
 }
 /* 가상 요소를 활용한 그리드 설정 */
 /* body::after{
@@ -92,26 +89,96 @@ body{
   top: 0;
   left: 50%;
 } */
+/* 공통 반응형 콘텐츠 */
+.rwd-img{
+  max-width: 100%;
+  height: auto;
+}
 /* 공통 레이아웃 */
 .header, .navigation, .main, .footer{
   width: 100%;
 }
-/* 공통 검색 폼*/
-/* .input[name="search"]{
-  border: 1px solid #aaaaaa;
-  border-radius: 3px;
-} */
-.search-form input{
-  border: 1px solid #aaaaaa;
+/* 공통 검색폼 */
+input[name="search"]{
+  border: 1px solid #aaa;
   border-radius: 3px;
   padding: 5px 5px 5px 10px;
-}
-/* 공통 네비게이션 */
-
+} 
 /* 공통 메인 */
+/* 공통 메인섹션 제목 */
+.section-heading{
+  font-size: 1.3em;
+  font-family: "Noto Sans Bold";
+  height: 60px;
+  padding-left: 60px;
+  background: url("images/sprite_main.png") no-repeat 0 0;
+}
+.en-heading{
+  display: block;
+  text-transform: capitalize;
+}
+.recommend-book-heading .en-heading{
+  color: #ABD375;
+}
+.news-heading .en-heading{
+  color: #e8ca58;
+}
+.board-heading .en-heading{
+  color: #c7b39a;
+}
+.favorite-site-heading .en-heading{
+  color: #eea60a;
+}
+.twitter-heading .en-heading{
+  color: #6aaee6;
+}
+.news-heading{
+  background-position: 0 -230px;
+}
+.board-heading{
+  background-position: 0 -115px;
+}
+.favorite-site-heading{
+  background-position: 0 -345px;
+}
+.twitter-heading{
+  background-position: 0 -460px;
+}
+/* 공통 메인 섹션 문단 */
+/* $는 끝 ^는 시작을 알린다 */
+.main [class$="-summary"]{
+  line-height: 1.5;
+}
+
+/* 공통 추천서적 */
+.recommend-book-cover{
+  text-align: center;
+  margin: 10px auto;
+}
+.recommend-book-detail{
+  /* background: pink; */
+  text-align: center;
+  margin: 10px 0;
+}
+.recommend-book-author, .recommend-book-author-name{
+  display: inline;
+}
+.recommend-book-grade{
+  font-size: 1.8em;
+  color: #ABD375
+}
+.recommend-book-summary{
+  background: pink;
+  
+  /*  line-height: 1.5; 는 글짜 곱하기 1.5만큼 */
+  /* text-align: justify; 는 웹 크기 만큼 글씨 자간을 
+  맞추어주는건데 영문은 간격이 조금 넓게 나올수있음*/
+
+}
+
+
 .main{
   background: orange;
-  height: 70vh;
 }
 .recommend-book{
   background: yellow;
@@ -131,7 +198,6 @@ body{
 /* 공통 푸터 */
 .footer{
   background: violet;
-  height: 10vh;
 }
 @media screen and (max-width: 990px){
   /* 모바일 그리드 설정 - 4col */
@@ -153,31 +219,31 @@ body{
   .grid-show .grid-unit{
     background-color: rgba(0,0,255,0.5);
   }
+  /* 모바일 바디 */
+  body{
+    font-size: 1.4rem;
+  }
   /* 모바일 헤더*/
-.header{
-  background: #38302e;
-  padding: 0 20px;
-  display: flex; 
-  flex-direction: column;
-}
-/* 모바일 로고 */
-.logo{
-  padding: 10px 0;
-
-}
-/* inline 말고 block 으로 로고 밑 여백없애기 */
-.logo img{
-  display: block;
-}
-
-
+  .header{
+    background: #38302E;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  /* 모바일 로고 */
+  .logo{
+    padding: 10px 0;
+  }
+  .logo img{
+    display: block; 
+  }
   /* 모바일 안내링크*/
   .member{
-    display: flex;
-    justify-content: flex-end;
     background: #988574;
-    margin: 0 -20px;
-    order: -1;
+    display: flex;
+    justify-content: flex-end; /* Flex를 이용하여 모바일에서 안내링크 가로로 배치, 맨오른쪽으로 정렬 */
+    margin: 0 -20px; /* 상위요소인 헤더의 패딩이 있으나 안내링크에는 적용되지 않도록 음수를 사용하였다 (-20px) */
+    order: -1; /* 안내링크 로고 위로 보내기 위하여 */
     padding: 10px 20px;
   }
   .member a{
@@ -191,31 +257,24 @@ body{
   .search-form fieldset{
     font-size: 0;
   }
-  /* .search-form legend,input[name="search"], .btn-search {
-    font-size: 1.6rem;
-  } */
-  /* *는 전체 선택 */
-  .search-form *{
+  .search-form legend, input[name="search"], .btn-search{ 
     font-size: 1.6rem;
   }
-  input[name="search"]{
-    width: calc(100% - 40px);
-    
+  input[name="search"]{ /* 검색박스 사이즈 조정 */
+    width: calc(100% - 40px);  
   }
-  .btn-search{
-    
+  .btn-search{/* 이미지 검색버튼 아래에 숨겨짐 */
     position: relative;
     width: 30px;
     height: 30px;
     border: 0;
     padding: 0;
-    margin-left: 10px;
     background: transparent;
+    margin-left: 10px;
   }
-  .btn-search::after{
-    content: "";
-    cursor: pointer;
-    /* cursor: pointer; 이거 화살표에서 손가락으로 바꾸는것*/
+  .btn-search::after{/* 모바일에서 보이는 검색버튼 (이미지) - 상위 btn 위에 배치됨 */
+    content:"";
+    cursor: pointer; /* 클릭 가능하게 해줌 */
     position: absolute;
     left: 0;
     top: 0;
@@ -224,19 +283,45 @@ body{
     background: url("images/btn_search.png");
     background-size: 100% 100%;
   }
-  /* 모바일 네비게이션*/
-/* 모바일 메인 메뉴 제어 버튼 */
+  /* 모바일 네비게이션 */
+  .menu{
+    background: #000;
+    color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 70%;
+    height: 100vh;
+    padding: 20px;
+    transform: translateX(-100%);
+    transition: all 200ms;
+  }
+  .menu-act{
+    transform: translateX(0) !important;
+  }
+  .menu-item{
+    margin: 10px 0;
+  }
+  .sub-menu{
+    display: none;
+  }
+  .sub-menu li{
+    margin: 10px 0 10px 20px;
+  }
+  .menu-item-act .sub-menu{
+    display: block !important;
+  }
+  /* 모바일 메인메뉴 제어버튼 */
   .btn-menu{
-    
     width: 30px;
     height: 30px;
-   border: 0;
-    position: absolute;
-   right: 20px;
-   top: 70px;
-       overflow: hidden;
-  cursor: pointer;
-  background: transparent;
+    border: 0;
+    position: absolute; /* body 기준으로 버튼 배치 */
+    right: 20px; /* body 기준으로 버튼 배치 */
+    top: 70px; /* body 기준으로 버튼 배치 */
+    overflow: hidden; /* 넘치는부분 숨기기 */
+    cursor: pointer;
+    background: transparent;
   }
   .menubar{
     position: absolute;
@@ -251,11 +336,11 @@ body{
   }
   .menubar-middle{
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(-50%); /* 정중앙 배치 */
   }
   .menubar-bottom{
     top: 100%;
-    transform: translateY(-100%);
+    transform: translateY(-100%); /* 맨아래 배치 */
   }
   .btn-menu-act .menubar-top{
     top: 50%;
@@ -268,50 +353,27 @@ body{
     top: 50%;
     transform: translateY(-50%) rotate(45deg);
   }
-  /* 모바일 메인 메뉴 */
-  .menu{
-    background: #000;
-    color: #fff;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 70%;
-    height: 100vh;
-    padding: 20px;
-    transform: translateX(-100%);
-    transition: all 200ms;
-  }
-
-  .menu-act{
-    transform: translateX(0)important;
-  }
-  .menu-item{
-    margin: 10px 0;
-  }
-  .sub-menu{
-    display: none;
-  }
-  .menu-item-act .sub-menu{
-    display: block important;
-  }
-  .sub-menu li{
-    margin: 10px 0 10px 20px;
-  }
-
-
+  /* 모바일 메인메뉴 */
+  
   /* 모바일 메인*/
-  .main{background-color: #988574;
-    box-shadow: 0 -2px 5px 0 rgba(0, 0, 0, 0.85), 0 2px 5px 00 rgba(0, 0, 0, 0.85);
-  }
-
-  .btn-menu{
-    display: none;
+  .main{
+    display: flex;
+    flex-direction: column;
+    /*justify-content: flex-start;
+    justify-content: space-evenly;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;*/
   }
   /* .main >*{
     height: 10vh;
     width: 50%;
     flex-grow: 1;
   }*/
+/* 모바일 추천서적 */
+.recommend-book-cover{
+  width: 70%;
+}
 /* 모바일 푸터*/
 }
 @media screen and (min-width: 1000px) {
@@ -329,6 +391,10 @@ body{
   .grid-show .grid-unit{
     background-color: rgba(255,0,0,0.5);
   }
+  /* 데스크탑 바디 */
+  body{
+    font-size: 1.6rem;
+  }
   /* 웹카페 데스크탑 레이아웃 */
   .header,
   .navigation,
@@ -339,110 +405,88 @@ body{
   }
   /* 데스크탑 헤더 */
   .header{
-  
     position: relative;
-   
-
   }
-  /* .header {
+  /* .header { 
     display: grid;
     grid-template-columns: repeat(12, 65px);
     grid-template-rows: 50px 50px;
     grid-column-gap: 20px;
     align-items: center;
-    
   } */
-
   /* 데스크탑 로고 */
-.logo{
-  grid-column: 1 / span 3;
-  grid-row: 1 / span 2;
-  position: absolute;
-  left: 0;
-  top: 50%;
-  margin-top: -30px;
-  
-
-}
-
-
-
-
-  /* 데스크탑 안내링크*/
-  .member{
+  .logo{ /* 로고 그리드에 배치 */
+    grid-column: 1 / span 3;
+    grid-row: 1 / span 2;
+    position: absolute;
+    left: 0;
+    top: 50%; 
+    margin-top: -30px;
+  }
+  /* 데스크탑 안내링크 */
+  .member{ /* 안내링크 그리드에 배치 */
     grid-column: 9 / span 4;
-    /* 생략 가능 grid-row: 1 / span 2; */
     position: relative;
     right: -16px;
-    font-size: 0;
-    text-align: right;
-    
+    font-size: 0; /* 중간에 공백 제거를 위하여 */
+    text-align: right; /* 맨오른쪽 정렬 */
   }
   .member li{
-    font-size: 1.6rem;
+    font-size: 1.6rem; /* 중간에 공백 제거를 위하여 */
     display: inline-block;
-
   }
-
-  /* 데스크탑 검색 폼 */
+  .member li:nth-child(-n+2)::after{
+    content: "|";
+  }
+  .member a{
+    display: inline-block; 
+    padding: 10px 1em;
+  }
+  /* 데스크탑 검색폼 */
   .search-form{
     grid-column: 7 / span 6;
     grid-row: 2;
-   
     justify-self: end;
     padding: 10px 0;
   }
   .search-form fieldset{
-    
     float: right;
-
   }
   input[name="search"]{
     width: 400px;
   }
   .btn-search{
-    border: 1px solid #aaaaaa;
+    border: 1px solid #aaa;
     border-radius: 3px;
-    background-color: #988574;
+    background: #988574;
     color: #fff;
-    padding: 5px 10px; 
-    /* padding A(위아래) B(좌우) */
+    padding: 5px 10px;
   }
-
-  .member li:nth-child(-n+2)::after{
-    content: "|";
-  }
-  .member a{
-    display: inline-block;
-    padding: 10px 1em;
-  }
-
   /* 데스크탑 내비게이션 */
   .nav-container {
     background: #988574;
-    box-shadow: 0 -2px 5px 0 rgba(0,0,0,0.85), 0 2px 5px 0 rgba(0, 0, 0, 0.85);
+    /* border-top: 2px solid #000; */
+    box-shadow: 0 -2px 5px 0 rgba(0,0,0,0.85), 0 2px 5px 0 rgba(0,0,0,0.85);
   }
-
+  .btn-menu{
+    display: none;
+  }
   .menu{
     display: flex;
     justify-content: space-between;
     color: #fff;
-    padding 20px 0;
+    padding: 20px 0;
   }
-
   .menu-item-text{
     font-size: 1.8rem;
-    font-family: "Noto Sans Bold";
+    font-family: 'Noto Sans Bold';
     text-shadow: 1px 0 0 #000, 0 1px 0 #000, -1px 0 0 #000, 0 -1px 0 #000;
   }
   .sub-menu li{
     margin: 10px 0 0 20px;
- 
-
-
+  }
   /* 데스크탑 메인 콘텐츠 */
   .main {
-    height: 70vh;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -450,8 +494,12 @@ body{
   .main >*{
     flex: auto 0 1;
   }
+  /* 데스크탑 추천서적 */
   .recommend-book{
     flex-basis: 320px;
+  }
+  .recommend-book-cover{
+    width: 60%;
   }
   .news{
     flex-basis: 660px;
@@ -470,6 +518,5 @@ body{
     background: #988574;
   }
   .footer {
-    height: 10vh;
   }
 }
