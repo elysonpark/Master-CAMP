@@ -14,13 +14,16 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: border-radius 500ms 0 ease, background 1000ms 500ms ease-in, transform 500ms 1000ms ease-in-out;
-  /* transition-property: border-radius, background, transform;
+  transition: border-radius 500ms 0ms ease, background 1000ms 500ms ease-in, transform 500ms 1000ms ease-in-out;
+  /* transition-property: border-radius, background, transform; 
   transition-duration: 500ms, 1000ms, 500ms;
   transition-delay: 0ms, 500ms, 1000ms;
-  transition-timing-function: cubic-bezier(0,.26,.73,-0.9); */
+  transition-timing-function: cubic-bezier(0,.28,.52,-0.76); */
 }
-.box-act{
+/* 마우스 올릴때 작동 */
+ .box:hover{  
+/* 버튼 클릭시 작동 */
+  /* .box-act{ */
   border-radius: 50%;
   background: pink;
   transform: rotate(360deg) scale(.5);
